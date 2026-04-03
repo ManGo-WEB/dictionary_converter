@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+input/*.docx
+split/*.docx
+output/*.csv
+_1_.csv
