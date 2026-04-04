@@ -4,9 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dictionary Convert</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <h1>Dictionary Convert</h1>
-    <p>Заглушка — будет заменена на полный интерфейс в этапе 5.</p>
+    <div class="container">
+        <h1 class="title">Dictionary Convert</h1>
+
+        <!-- Загрузка файла -->
+        <section class="card">
+            <h2 class="card-title">Загрузка файла</h2>
+            <div class="upload-area">
+                <input type="file" id="file-input" accept=".docx" hidden>
+                <label for="file-input" class="upload-label" id="upload-label">
+                    Выберите .docx файл или перетащите сюда
+                </label>
+                <button class="btn btn-upload" id="btn-upload" disabled>Загрузить</button>
+            </div>
+        </section>
+
+        <!-- Управление -->
+        <section class="card">
+            <h2 class="card-title">Управление</h2>
+            <div class="controls">
+                <button class="btn btn-action" id="btn-split">Сплит</button>
+                <button class="btn btn-action" id="btn-convert">Конвертация</button>
+                <button class="btn btn-run-all" id="btn-run-all">Запустить всё</button>
+            </div>
+        </section>
+
+        <!-- Папки -->
+        <section class="card">
+            <h2 class="card-title">Папки</h2>
+            <div class="folders">
+                <button class="btn btn-folder" data-folder="input">Открыть input</button>
+                <button class="btn btn-folder" data-folder="split">Открыть split</button>
+                <button class="btn btn-folder" data-folder="output">Открыть output</button>
+            </div>
+        </section>
+
+        <!-- Лог -->
+        <section class="card">
+            <h2 class="card-title">Лог</h2>
+            <div class="log-area" id="log-area"></div>
+        </section>
+    </div>
+
+    <script src="/static/script.js"></script>
 </body>
 </html>

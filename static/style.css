@@ -1,0 +1,183 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #f0f2f5;
+    color: #333;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: #1a1a1a;
+}
+
+/* Карточки */
+.card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+}
+
+/* Загрузка файла */
+.upload-area {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.upload-label {
+    flex: 1;
+    padding: 14px 18px;
+    border: 2px dashed #d0d5dd;
+    border-radius: 8px;
+    text-align: center;
+    color: #888;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.upload-label:hover {
+    border-color: #4a90d9;
+    background: #f8faff;
+}
+
+.upload-label.has-file {
+    border-color: #4a90d9;
+    border-style: solid;
+    color: #333;
+    background: #f8faff;
+}
+
+/* Кнопки */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, opacity 0.2s;
+    white-space: nowrap;
+}
+
+.btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.btn-upload {
+    background: #4a90d9;
+    color: #fff;
+}
+
+.btn-upload:hover:not(:disabled) {
+    background: #3a7bc8;
+}
+
+/* Управление */
+.controls {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-action {
+    flex: 1;
+    background: #4a90d9;
+    color: #fff;
+}
+
+.btn-action:hover:not(:disabled) {
+    background: #3a7bc8;
+}
+
+.btn-run-all {
+    flex: 1;
+    background: #43a047;
+    color: #fff;
+}
+
+.btn-run-all:hover:not(:disabled) {
+    background: #388e3c;
+}
+
+/* Папки */
+.folders {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-folder {
+    flex: 1;
+    background: #e8eaed;
+    color: #444;
+}
+
+.btn-folder:hover:not(:disabled) {
+    background: #d3d6db;
+}
+
+/* Лог */
+.log-area {
+    background: #1e1e1e;
+    color: #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    height: 300px;
+    overflow-y: auto;
+    font-family: "Cascadia Code", "Fira Code", "Consolas", monospace;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.log-area:empty::before {
+    content: "Лог пуст. Загрузите файл и запустите обработку.";
+    color: #555;
+    font-style: italic;
+}
+
+.log-line {
+    padding: 2px 0;
+    word-break: break-word;
+}
+
+.log-info {
+    color: #ccc;
+}
+
+.log-success {
+    color: #4caf50;
+}
+
+.log-error {
+    color: #f44336;
+    font-weight: 600;
+}
