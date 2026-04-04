@@ -10,14 +10,15 @@ from docx.shared import Pt, RGBColor
 def is_section_header(text):
     """
     Проверяет, является ли текст заголовком раздела.
-    Заголовок — одиночная заглавная буква (А-Я, Ё) или специальный символ (ѲѲ).
+    Заголовок — одиночная заглавная буква бурятского алфавита или специальный символ (ѲѲ).
+    Бурятский алфавит включает: А-Я, Ё, Ө, Ү, Һ.
     """
     text = text.strip()
-    if text in {'ѲѲ', 'Ё'}:
+    if text == 'ѲѲ':
         return True
     if len(text) != 1:
         return False
-    return bool(re.match(r'^[А-ЯЁѲ]$', text))
+    return bool(re.match(r'^[А-ЯЁӨҮҺѲ]$', text))
 
 
 def copy_run_formatting(source_run, target_run):
