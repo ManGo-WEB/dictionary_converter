@@ -102,7 +102,8 @@ class FormatProcessor:
             last_char = last_visible[-1] if last_visible else ''
             first_visible = re.sub(r'<[^>]+>', '', part)
             first_char = first_visible[0] if first_visible else ''
-            if last_char != '(' and first_char not in (')', ',', '.', ';', ':', '!', '?'):
+            is_ellipsis = first_visible.startswith('...')
+            if is_ellipsis or (last_char != '(' and first_char not in (')', ',', '.', ';', ':', '!', '?')):
                 result += ' ' + part
             else:
                 result += part
