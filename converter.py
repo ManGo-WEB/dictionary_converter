@@ -74,7 +74,16 @@ class FormatProcessor:
                     current_text = []
                 current_format = run_format
 
-            if current_text and not current_text[-1].endswith(' ') and not run_text.startswith(' '):
+            last_char = current_text[-1][-1] if current_text and current_text[-1] else ''
+            next_char = run_text[0] if run_text else ''
+            needs_space = (
+                current_text
+                and not last_char.endswith(' ')
+                and not next_char.startswith(' ')
+                and last_char != '('
+                and next_char not in (')', ',', '.', ';', ':', '!', '?')
+            )
+            if needs_space:
                 current_text.append(' ')
             current_text.append(run_text)
 
@@ -84,7 +93,20 @@ class FormatProcessor:
                 text = f'<span class="{current_format}">{text}</span>'
             formatted_text.append(text)
 
-        return ' '.join(part for part in formatted_text if part.strip())
+        parts = [p for p in formatted_text if p.strip()]
+        if not parts:
+            return ''
+        result = parts[0]
+        for part in parts[1:]:
+            last_visible = re.sub(r'<[^>]+>', '', result)
+            last_char = last_visible[-1] if last_visible else ''
+            first_visible = re.sub(r'<[^>]+>', '', part)
+            first_char = first_visible[0] if first_visible else ''
+            if last_char != '(' and first_char not in (')', ',', '.', ';', ':', '!', '?'):
+                result += ' ' + part
+            else:
+                result += part
+        return result
 
 
 class DocumentProcessor:
