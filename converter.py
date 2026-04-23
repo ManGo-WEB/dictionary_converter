@@ -126,7 +126,6 @@ class DocumentProcessor:
 
         formatted_content = self.format_processor.process_runs(paragraph, skip_words)
         formatted_content = re.sub(r'\b(I|II|III|IV|V|VI|VII|VIII|IX|X)\b[:, ]?', '', formatted_content)
-        formatted_content = re.sub(r'\([^)]+\)', '', formatted_content)
         formatted_content = re.sub(r'<(?!/?span)[^>]+>', '', formatted_content)
 
         if has_punctuation:
