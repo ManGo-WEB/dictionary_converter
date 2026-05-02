@@ -96,7 +96,7 @@ def open_folder():
     os.makedirs(path, exist_ok=True)
 
     try:
-        subprocess.Popen(['explorer', os.path.normpath(path)])
+        subprocess.Popen(['cmd', '/c', 'start', '', os.path.normpath(path)])
         return jsonify({'status': 'ok'})
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)}), 500
