@@ -74,17 +74,6 @@ class FormatProcessor:
                     current_text = []
                 current_format = run_format
 
-            last_char = current_text[-1][-1] if current_text and current_text[-1] else ''
-            next_char = run_text[0] if run_text else ''
-            needs_space = (
-                current_text
-                and not last_char.endswith(' ')
-                and not next_char.startswith(' ')
-                and last_char != '('
-                and next_char not in (')', ',', '.', ';', ':', '!', '?')
-            )
-            if needs_space:
-                current_text.append(' ')
             current_text.append(run_text)
 
         if current_text:
